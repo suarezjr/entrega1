@@ -56,8 +56,8 @@ while (vidas>0 && arrayPalabraMostrar.indexOf("_") != -1){
     }
   } else { // si ingreso mas de una letra, considero que se arriesgó, por lo tanto comparo con palabra
       if (palabra==letra) {
-        arrayPalabraMostrar=palabra.split('')
-        break
+        arrayPalabraMostrar=palabra.split('') // cargo el array a mostrar como si se hubiese adivinado todo
+        break // finalizo while asi paso a anunciar ganador
       } else {
         // aqui tambien se podria considerar que el juego se detenga, declarando perdedor a quien no adivino
         vidas--
@@ -66,9 +66,7 @@ while (vidas>0 && arrayPalabraMostrar.indexOf("_") != -1){
 
   // gestiono el indice de jugadores para que juegue el siguiente, o comience nuevamente
   indiceJugadores++ 
-  if (indiceJugadores==jugadores.length){
-    indiceJugadores=0 // si llego al final del array lo vuelvo a poner al principio
-  }
+  if (indiceJugadores==jugadores.length){indiceJugadores=0}
   
 }
 

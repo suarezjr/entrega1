@@ -1,6 +1,30 @@
 
+/* funcion que devuelve un string para dibujar el estado del ahorcado segun la cantidad de vidas perdidas */
+function dibujarAhorcado(vida){
+  let cadena=""
+  if (vida==8){
+    cadena="________"+"\n|          |"+"\n|"+"\n|"+"\n|"+"\n|"+"\n~~~~~~~~~~~~~~"  
+  } else if(vida==7){
+    cadena="________"+"\n|          |"+"\n|         O"+"\n|"+"\n|"+"\n|"+"\n~~~~~~~~~~~~~~"  
+  } else if(vida==6){
+    cadena="________"+"\n|          |"+"\n|         O"+"\n|          |"+"\n|"+"\n|"+"\n~~~~~~~~~~~~~~"  
+  } else if(vida==5){
+    cadena="________"+"\n|          |"+"\n|         O"+"\n|         -|"+"\n|"+"\n|"+"\n~~~~~~~~~~~~~~"  
+  } else if(vida==4){
+    cadena="________"+"\n|          |"+"\n|         O"+"\n|         -|-"+"\n|"+"\n|"+"\n~~~~~~~~~~~~~~"  
+  } else if(vida==3){
+    cadena="________"+"\n|          |"+"\n|         O"+"\n|         -|-"+"\n|       <"+"\n|"+"\n~~~~~~~~~~~~~~"  
+  } else if(vida==2){
+    cadena="________"+"\n|          |"+"\n|         O"+"\n|         -|-"+"\n|       < >"+"\n|"+"\n~~~~~~~~~~~~~~"  
+  } else if(vida==1){
+    cadena="________"+"\n|          |"+"\n|         O"+"\n|         -|-"+"\n|       < >"+"\n|"+"\n~~~FIRE~~~~"  
+  } else {
+    cadena="________"+"\n|          |"+"\n|         X"+"\n|         -|-"+"\n|       < >"+"\n|"+"\n~~~FIRE~~~~"  
+  }
+  return cadena
+}
 
-let vidas=3 // cantidad de veces que no exista la letra seleccionada en la pantalla 
+let vidas=8 // cantidad de veces que no exista la letra seleccionada en la pantalla 
 const cantMaxJugadores=5
 let letrasYaIngresadas=[] // array donde guardo las letras que se van seleccionando
 let jugadores=[] // lista de jugadores
@@ -34,7 +58,8 @@ alert("PREPARAOS... EL JUEGO ESTÁ POR COMENZAR...")
 while (vidas>0 && arrayPalabraMostrar.indexOf("_") != -1){
   
   // solicito al usuario que ingrese su opcion: puede ser una letra o una palabra
-  let letra = prompt(" Ahora Juega: "+jugadores[indiceJugadores]+"\n Intentos: "+vidas+"\n Letras Ya Ingresadas: "+letrasYaIngresadas+"\n Palabra: "+arrayPalabraMostrar+"\n Ingrese una letra o ARRIESGUE: ")
+  console.log("Intentos: "+vidas)
+  let letra = prompt(dibujarAhorcado(vidas)+"\n Ahora Juega: "+jugadores[indiceJugadores]+". Letras Ya Ingresadas: "+letrasYaIngresadas+"\n Palabra: "+arrayPalabraMostrar+" Ingrese una letra o ARRIESGUE: ")
   // cargo la letra/palabra como ya ingresada para llevar control
   letrasYaIngresadas.push(letra)
 
